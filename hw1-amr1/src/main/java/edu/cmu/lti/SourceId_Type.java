@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** What is the id of the source?
- * Updated by JCasGen Thu Oct 18 19:45:47 EDT 2012
+ * Updated by JCasGen Thu Oct 18 22:21:37 EDT 2012
  * @generated */
 public class SourceId_Type extends Annotation_Type {
   /** @generated */

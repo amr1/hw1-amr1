@@ -12,7 +12,7 @@
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import name="typeSystemDescriptor"/>
+        <import location="/home/andrew/git/hw1-amr1/hw1-amr1/src/main/java/typeSystemDescriptor.xml"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>

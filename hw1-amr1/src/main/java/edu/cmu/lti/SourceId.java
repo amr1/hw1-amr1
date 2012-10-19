@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** What is the id of the source?
- * Updated by JCasGen Thu Oct 18 19:45:47 EDT 2012
- * XML source: /home/andrew/git/hw1-amr1/hw1-amr1/src/main/java/typeSystemDescriptor.xml
+ * Updated by JCasGen Thu Oct 18 22:21:37 EDT 2012
+ * XML source: /home/andrew/git/hw1-amr1/hw1-amr1/src/main/java/aeDescriptor.xml
  * @generated */
 public class SourceId extends Annotation {
   /** @generated
