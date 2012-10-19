@@ -52,24 +52,30 @@ public class Outputter extends CasConsumer_ImplBase {
     // get the ner tagging
     it = jcas.getAnnotationIndex(NERAnnotation.type).iterator();
     NERAnnotation ner = null;
-    if (it.hasNext()) {
+    while (it.hasNext()) {
       ner = (NERAnnotation) it.next();
-    } else {
-      throw new ResourceProcessException();
-    }
-    
-    int begin = ner.getBegin();
-    int end = ner.getEnd();
-    String document = jcas.getDocumentText();
-    String relevant = document.substring(Math.min(document.length(), begin), Math.min(document.length(), end));
-    try {
-      fileWriter.write(id.getId() + "|" + begin + " " + end + "|" + relevant + "\n");
-    } catch (IOException e) {
-      throw new ResourceProcessException(e);
-    }
-    
+      int begin = ner.getBegin();
+      int end = ner.getEnd();
+      String document = jcas.getDocumentText();
+      String relevant = document.substring(Math.min(document.length(), begin), Math.min(document.length(), end));
+      try {
+        fileWriter.write(id.getId() + "|" + numNonWhiteSpace(begin, document) + " " + (numNonWhiteSpace(end, document) - 1) + "|" + relevant + "\n");
+      } catch (IOException e) {
+        throw new ResourceProcessException(e);
+      }
+    } 
   }
 
+
+  private int numNonWhiteSpace(int index, String document) {
+    
+    int total = 0;
+    for (int i=0; i<index; i++) {
+      if (document.charAt(i) != ' ')
+        total++;
+    }
+    return total;
+  }
 
   public void collectionProcessComplete() throws IOException {
     
