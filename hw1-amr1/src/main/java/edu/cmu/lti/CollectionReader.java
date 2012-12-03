@@ -1,3 +1,7 @@
+/** @author Andrew Rodriguez (amr1)
+ *  CollectionReader reads in the input to be processed.
+ */
+
 package edu.cmu.lti;
 import java.io.BufferedReader;
 import java.io.File;

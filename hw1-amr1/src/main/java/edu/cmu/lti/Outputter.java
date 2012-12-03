@@ -1,3 +1,7 @@
+/** @author Andrew Rodriguez (amr1)
+ *  Outputter spits out the NE recognized in the correct output format.
+ */
+
 package edu.cmu.lti;
 
 import java.io.BufferedWriter;

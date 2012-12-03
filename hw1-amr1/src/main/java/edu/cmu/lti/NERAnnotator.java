@@ -1,3 +1,9 @@
+/** @author Andrew Rodriguez (amr1)
+ * 
+ * A Named Entity Recognizer (NER) that directly calls the stanford parser and applies some processing that is specific to the biological domain.
+ * 
+ */
+
 package edu.cmu.lti;
 
 import java.util.ArrayList;
@@ -28,6 +34,7 @@ public class NERAnnotator extends JCasAnnotator_ImplBase {
 
   @Override
   public void initialize(UimaContext ctx) throws ResourceInitializationException {
+    // setup the stanford parser
     Properties props = new Properties();
     props.put("annotators", "tokenize, ssplit, pos");
     pipeline = new StanfordCoreNLP(props);
@@ -82,6 +89,7 @@ public class NERAnnotator extends JCasAnnotator_ImplBase {
     return Arrays.asList(likelyWords).contains(originalText);
   }
 
+  /** isAcronym allows for the NER to return likely acronyms. */
   private boolean isAcronym(String originalText) {
     
     // all upper case?

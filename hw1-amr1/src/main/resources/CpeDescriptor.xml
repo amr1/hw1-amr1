@@ -10,7 +10,7 @@
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
         <casProcessor deployment="integrated" name="NERAnnotatorDescriptor">
             <descriptor>
-                <import location="../java/aeDescriptor.xml"/>
+                <import location="../../../desc/aeDescriptor.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>
