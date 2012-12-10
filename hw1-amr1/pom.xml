@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cmu.lti.11791.f12.hw1</groupId>
   <artifactId>hw1-amr1</artifactId>
-  <version>0.0.8</version>
+  <version>0.0.9-SNAPSHOT</version>
   <scm>
 		<connection>scm:git:git@github.com:amr1/hw1-amr1.git</connection>
 		<developerConnection>scm:git:git@github.com:amr1/hw1-amr1.git</developerConnection>
