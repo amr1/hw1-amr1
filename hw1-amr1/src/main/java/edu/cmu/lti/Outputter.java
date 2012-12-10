@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -17,6 +18,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
+import org.apache.uima.util.ProcessTrace;
 
 public class Outputter extends CasConsumer_ImplBase {
   private static final String PARAM_OUTPUT = "OutputFile";
@@ -56,6 +58,7 @@ public class Outputter extends CasConsumer_ImplBase {
     // get the ner tagging
     it = jcas.getAnnotationIndex(NERAnnotation.type).iterator();
     NERAnnotation ner = null;
+    
     while (it.hasNext()) {
       ner = (NERAnnotation) it.next();
       int begin = ner.getBegin();
@@ -63,7 +66,7 @@ public class Outputter extends CasConsumer_ImplBase {
       String document = jcas.getDocumentText();
       String relevant = document.substring(Math.min(document.length(), begin), Math.min(document.length(), end));
       try {
-        fileWriter.write(id.getId() + "|" + numNonWhiteSpace(begin, document) + " " + (numNonWhiteSpace(end, document) - 1) + "|" + relevant + "\n");
+        fileWriter.write(id.getId() + "|" + numNonWhiteSpace(begin, document) + " " + (numNonWhiteSpace(end, document) - 1) + "|" + relevant + "\n");        
       } catch (IOException e) {
         throw new ResourceProcessException(e);
       }
@@ -81,7 +84,14 @@ public class Outputter extends CasConsumer_ImplBase {
     return total;
   }
 
-  public void collectionProcessComplete() throws IOException {
+  @Override
+  public void collectionProcessComplete(ProcessTrace arg0) throws IOException {
+    
+    try {
+      super.collectionProcessComplete(arg0);
+    } catch (ResourceProcessException e) {
+      e.printStackTrace();
+    }
     
     fileWriter.close();
     
